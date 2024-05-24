@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: meetup-cluster
+  region: us-east-1
+
+managedNodeGroups:
+- name: ng-1
+  instanceType: t3.medium
+  minSize: 0
+  maxSize: 5
+  desiredCapacity: 2
+  iam:
+    withAddonPolicies:
+      autoScaler: true
+      externalDNS: true
+      imageBuilder: true
+      certManager: true
+      ebs: true
+      efs: true
+      albIngress: true
+  privateNetworking: true
