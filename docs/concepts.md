@@ -4,6 +4,10 @@
 
 `eksctl` is a command-line tool for creating and managing Amazon Elastic Kubernetes Service (EKS) clusters. It is an open-source project developed and maintained by the AWS community. `eksctl` simplifies the process of provisioning and configuring EKS clusters, making it easier for developers and DevOps engineers to work with Kubernetes on AWS.
 
+## Arch
+
+[Architecture](./images/eksctl_arch.png)
+
 ## Key Features of eksctl
 
 1. **Cluster Creation**: `eksctl` allows you to create new EKS clusters with a single command, handling all the necessary AWS resources and configurations.
