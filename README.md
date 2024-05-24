@@ -1,17 +1,17 @@
 # meetup_2024-05-24_eksctl
 
 ## Create EKS cluster from file
-eksctl create cluster -f .\cluster.yaml
+eksctl create cluster -f cluster.yaml
 
 ## Drop EKS cluster from file
-eksctl delete cluster -f .\cluster.yaml
+eksctl delete cluster -f cluster.yaml
 
 ## Create EKS cluster in console
 eksctl create cluster --name=dev-cluster --version=1.29 --auto-kubeconfig --node-type=t2.micro --nodes=1 
 eksctl create cluster --name=dev-cluster --version=1.29 --auto-kubeconfig --node-type=t2.micro --nodes-min=1 --nodes-max=3
 
 ## Get EKS config
-eksctl get cluster dev-cluster --region=us-east-1
+eksctl get cluster dev-cluster-01 --region=us-east-1
 
 
 ## Get EKS node group 
@@ -22,14 +22,14 @@ eksctl scale nodegroup --cluster=dev-cluster-01 --region us-east-1 --nodes=2 ng-
 
 
 ## Deploy Apache with PHP in EKS
-kubectl apply -f .\php-apache-namespace.yaml
+kubectl apply -f deployment/php-apache-namespace.yaml
 kubectl get ns
 
-kubectl apply -f .\php-apache-deployment.yaml
+kubectl apply -f deployment/php-apache-deployment.yaml
 kubectl get po -n demo
 
-kubectl apply -f .\php-apache-hpa.yaml
+kubectl apply -f deployment/php-apache-hpa.yaml
 kubectl get hpa -n demo
 
-kubectl apply -f .\php-apache-loadbalancer.yaml
+kubectl apply -f deployment/php-apache-loadbalancer.yaml
 kubectl get svc -n demo
