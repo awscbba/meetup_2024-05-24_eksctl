@@ -1,0 +1,27 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dev-cluster-01
+  region: us-east-1
+  version: "1.29"
+
+availabilityZones: ["us-east-1a", "us-east-1b"]
+
+vpc:
+  nat:
+    gateway: Single
+
+managedNodeGroups:
+  - name: ng-workers
+    amiFamily: AmazonLinux2
+    instanceType: t2.medium
+    minSize: 1
+    maxSize: 3
+    volumeSize: 80
+    privateNetworking: true
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
+    logRetentionInDays: 7
